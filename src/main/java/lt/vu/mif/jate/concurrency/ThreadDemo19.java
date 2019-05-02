@@ -4,15 +4,17 @@ import java.util.Random;
 import java.util.concurrent.BrokenBarrierException;
 import java.util.concurrent.CyclicBarrier;
 import java.util.concurrent.TimeUnit;
-import lombok.RequiredArgsConstructor;
 
 public class ThreadDemo19 {
 
-    @RequiredArgsConstructor
     private static class Task implements Runnable {
 
         private final CyclicBarrier barrier;
 
+        public Task(CyclicBarrier barrier) {
+            this.barrier = barrier;
+        }
+        
         @Override
         public void run() {
             try {

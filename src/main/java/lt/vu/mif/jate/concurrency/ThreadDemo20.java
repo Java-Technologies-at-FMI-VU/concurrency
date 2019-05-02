@@ -4,9 +4,7 @@ import java.util.Random;
 import java.util.concurrent.ForkJoinPool;
 import java.util.concurrent.RecursiveTask;
 import java.util.concurrent.TimeUnit;
-import lombok.RequiredArgsConstructor;
 
-@RequiredArgsConstructor
 class Sum extends RecursiveTask<Long> { 
     
     private static final int THRESHOLD = 100;
@@ -14,6 +12,12 @@ class Sum extends RecursiveTask<Long> {
     private final int[] data;
     private final int low;
     private final int high;
+
+    public Sum(int[] data, int low, int high) {
+        this.data = data;
+        this.low = low;
+        this.high = high;
+    }
     
     @Override
     protected Long compute() { 

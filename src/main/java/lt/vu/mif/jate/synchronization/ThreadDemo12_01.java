@@ -32,8 +32,9 @@ public class ThreadDemo12_01 implements Runnable {
     
     public static void main(String[] args) {
         
-        Thread t1 = new Thread(new ThreadDemo12_01());
-        Thread t2 = new Thread(new ThreadDemo12_01());
+        Runnable run = new ThreadDemo12_01();
+        Thread t1 = new Thread(run);
+        Thread t2 = new Thread(run);
         
         t1.start();
         t2.start();

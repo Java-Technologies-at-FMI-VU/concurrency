@@ -4,9 +4,7 @@ import java.util.Collections;
 import java.util.SortedSet;
 import java.util.TreeSet;
 import java.util.concurrent.TimeUnit;
-import lombok.RequiredArgsConstructor;
 
-@RequiredArgsConstructor
 class PrimeRunner implements Runnable {
 
     public static boolean isPrime(int n) {
@@ -21,6 +19,14 @@ class PrimeRunner implements Runnable {
     private final int from;
     private final int to;
     private final SortedSet<Integer> results;
+
+    public PrimeRunner(int from, int to, SortedSet<Integer> results) {
+        this.from = from;
+        this.to = to;
+        this.results = results;
+    }
+    
+    
     
     @Override
     public void run() {

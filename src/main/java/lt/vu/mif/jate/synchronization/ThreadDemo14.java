@@ -1,16 +1,21 @@
 package lt.vu.mif.jate.synchronization;
 
+import java.util.Objects;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.TimeUnit;
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
 
-@RequiredArgsConstructor
 abstract class ProducerConsumer<E> implements Runnable {
     
-    @Getter
     protected final BlockingQueue<E> queue;
+
+    public ProducerConsumer(BlockingQueue<E> queue) {
+        this.queue = queue;
+    }
+
+    public BlockingQueue<E> getQueue() {
+        return queue;
+    }
     
     static void print(String msg) {
         System.out.println(Thread.currentThread().getName() + ": " + (msg == null ? "null" : msg));
@@ -34,7 +39,7 @@ class Consumer extends ProducerConsumer<String> {
                 print(msg);
                 
             } catch (InterruptedException ex) { }
-        } while (!msg.equals("exit"));
+        } while (!Objects.equals(msg, "exit"));
     }
 
 }

@@ -8,13 +8,19 @@ import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Executor;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
-import lombok.Getter;
 
-@Getter
 class Timer <V> {
     
     private Collection<V> results;
     private long elapsed = 0;
+
+    public Collection<V> getResults() {
+        return results;
+    }
+
+    public long getElapsed() {
+        return elapsed;
+    }
     
     public void execute(Executor ex, Collection<Callable<V>> tasks) throws InterruptedException {
         
@@ -26,6 +32,7 @@ class Timer <V> {
         
         for (Callable<V> task: tasks) {
             ex.execute(new Runnable() {
+                
                 @Override
                 public void run() {
                     ready.countDown();
@@ -41,6 +48,7 @@ class Timer <V> {
                     }
 
                 }
+                
             });
         }
         

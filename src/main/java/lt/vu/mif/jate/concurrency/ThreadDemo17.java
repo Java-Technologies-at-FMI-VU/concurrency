@@ -6,13 +6,16 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.FutureTask;
 import java.util.concurrent.TimeUnit;
-import lombok.RequiredArgsConstructor;
 
-@RequiredArgsConstructor
 class PrimeCounter implements Callable<Integer> {
 
     private final int from;
     private final int to;
+
+    public PrimeCounter(int from, int to) {
+        this.from = from;
+        this.to = to;
+    }
     
     public static boolean isPrime(int n) {
         for (int c = 2; c < n; ++c) {

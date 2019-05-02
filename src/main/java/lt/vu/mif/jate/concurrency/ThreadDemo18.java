@@ -4,13 +4,16 @@ import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
-import lombok.RequiredArgsConstructor;
 
-@RequiredArgsConstructor
 class Processor2 implements Runnable {
 
     private final int numb;
     private final CountDownLatch latch;
+
+    public Processor2(int numb, CountDownLatch latch) {
+        this.numb = numb;
+        this.latch = latch;
+    }
 
     @Override
     public void run() {

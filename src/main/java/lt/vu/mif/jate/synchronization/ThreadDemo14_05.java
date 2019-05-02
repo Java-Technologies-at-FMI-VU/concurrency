@@ -41,6 +41,7 @@ public class ThreadDemo14_05 {
             public void removed(Object e) {
                 System.out.println("Removed " + e);
             }
+            
         });
         
         for (int i = 0; i < 100; i++) {
